@@ -1,0 +1,84 @@
+P' -> P
+
+P -> D P
+P -> S P
+P -> null
+
+S -> S S
+S -> idn = E ;
+S -> L = E ;
+S -> if ( B ) { S }
+S -> if ( B ) { S } else { S }
+S -> while ( B ) { S }
+S -> idn ( Elst ) ;
+
+D -> D D
+D -> Type idn ( Dlst ) { D S }
+D -> Type idn C ;
+D -> struct idn { D } ;
+
+Type -> int
+Type -> unsigned
+Type -> float
+Type -> long
+Type -> short
+Type -> double
+Type -> char
+Type -> bool
+
+C -> [ Num ] C
+C -> null
+
+Num -> decimal
+Num -> hexadecimal
+Num -> octal
+Num -> float
+Num -> e-notation
+
+E -> E Op E
+E -> - E
+E -> ( E )
+E -> idn
+E -> L
+E -> Num
+E -> const_char
+E -> const_string
+
+Op -> +
+Op -> -
+Op -> *
+Op -> /
+Op -> %
+Op -> ^
+Op -> ++
+Op -> --
+Op -> *=
+OP -> /=
+Op -> +=
+OP -> -=
+
+L -> idn [ E ]
+L -> L [ E ]
+
+B -> B || B
+B -> B && B
+B -> ! B
+B -> ( B )
+B -> E RelOp E
+B -> true
+B -> Num
+
+RelOp -> <
+RelOp -> >
+RelOp -> <=
+RelOp -> >=
+RelOp -> !=
+RelOp -> ==
+
+Elst -> Elst , E
+Elst -> E
+
+Dlst -> Dlst , DE
+Dlst -> DE
+
+DE -> Type idn
